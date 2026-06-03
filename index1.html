@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="/logo comprimido.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="rL_quSUTKoQw8YmycJiXHuaKjksUeO7zkwWfkuJ5xMI" />
+    <meta name="description" content="Atomo Devs IT - Desarrollo de aplicaciones móviles desde Bahía Blanca, Argentina. Soluciones innovadoras y accesibles.">
+    <title>Atomo Devs IT | Mobile Solutions</title>
+
+    <style>
+        /* ─── RESET Y BASE ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c63ff;
+            --accent: #00d4aa;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f4f4f9;
+            --white: #ffffff;
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #16213e 100%);
+            color: white;
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, transparent 60%);
+            animation: pulse-bg 4s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(0,123,255,0.5);
+            box-shadow: 0 0 30px rgba(0,123,255,0.4);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff, #a8c8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* ─── NAVEGACIÓN ─── */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            gap: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(0,123,255,0.05);
+        }
+
+        /* ─── CONTENEDOR ─── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ─── SECCIÓN ─── */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ─── TARJETAS DE APPS ─── */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .app-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .app-card.featured::before {
+            background: linear-gradient(90deg, var(--accent), #00a080);
+        }
+
+        .app-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .app-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* ─── BADGES ─── */
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge-dev {
+            background: rgba(0,123,255,0.1);
+            color: var(--primary);
+            border: 1px solid rgba(0,123,255,0.2);
+        }
+
+        .badge-new {
+            background: rgba(0,212,170,0.1);
+            color: #00a080;
+            border: 1px solid rgba(0,212,170,0.3);
+        }
+
+        .badge-soon {
+            background: rgba(255,165,0,0.1);
+            color: #e6800a;
+            border: 1px solid rgba(255,165,0,0.3);
+        }
+
+        /* ─── TECH TAGS ─── */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tech-tag {
+            background: var(--bg);
+            color: var(--text-light);
+            padding: 0.2rem 0.6rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* ─── SECCIÓN SOBRE MÍ ─── */
+        .about-section {
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #a8c8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .skill-item span {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-item p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+        }
+
+        /* ─── ESTADÍSTICAS ─── */
+        .stats-section {
+            background: var(--white);
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ─── CONTACTO ─── */
+        .contact-section {
+            background: var(--bg);
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            color: var(--primary);
+        }
+
+        .contact-card span {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+        }
+
+        .contact-card strong {
+            font-size: 0.95rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--darker);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            header {
+                padding: 3rem 1.5rem 4rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            nav ul li a {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ─── ANIMACIÓN DE ENTRADA ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+    <div class="header-content">
+        <img src="logo comprimido.png" alt="Atomo Devs IT Logo" class="logo-img">
+        <h1>Atomo Devs IT</h1>
+        <p>Innovación en Desarrollo Mobile desde Bahía Blanca 🇦🇷</p>
+    </div>
+</header>
+
+<!-- ─── NAVEGACIÓN ─── -->
+<nav>
+    <ul>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- ─── ESTADÍSTICAS ─── -->
+<div class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <h3>3+</h3>
+                <p>Apps en desarrollo</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>2026</h3>
+                <p>Año de fundación</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>100%</h3>
+                <p>Enfoque en el usuario</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>ARG</h3>
+                <p>Bahía Blanca</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ─── PROYECTOS ─── -->
+<section id="proyectos">
+    <div class="container">
+        <div class="section-title fade-in">
+            <h2>Mis Proyectos / My Projects</h2>
+            <p>Aplicaciones diseñadas con propósito y dedicación</p>
+            <div class="line"></div>
+        </div>
+
+        <div class="apps-grid">
+
+            <!-- APP 1: Facturación -->
+            <div class="app-card fade-in">
+                <span class="card-icon">🧾</span>
+                <h3>Solución de Facturación Digital</h3>
+                <p>
+                    Aplicación robusta diseñada para la gestión fiscal y 
+                    administrativa. Simplifica facturas, clientes y reportes 
+                    desde tu dispositivo móvil.
+                </p>
+                <div class="card-footer">
+                    <span class="badge badge-dev">En Desarrollo</span>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP 2: Memo-X -->
+            <div class="app-card fade-in">
+                <span class="card-icon">🧠</span>
+                <h3>Memo-X</h3>
+                <p>
+                    Un desafío mental diseñado con Capacitor para una 
+                    experiencia nativa fluida. Entrena tu memoria con 
+                    niveles progresivos y estadísticas en tiempo real.
+                </p>
+                <div class="card-footer">
+                    <span class="badge badge-dev">En Desarrollo</span>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Capacitor</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP 3: Mi Día Fácil (NUEVA) -->
+            <div class="app-card featured fade-in">
+                <span class="card-icon">🌟</span>
+                <h3>Mi Día Fácil</h3>
+                <p>
+                    App de apoyo para personas con discapacidad intelectual. 
+                    Rutinas visuales, recordatorios por voz, registro emocional 
+                    y panel para familiares. Tecnología con propósito social.
+                </p>
+                <div class="card-footer">
+                    <span class="badge badge-new">⚡ Nuevo</span>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">TTS</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── SOBRE MÍ ─── -->
+<div class="about-section" id="sobre-mi">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h2>Sobre Atomo Devs IT</h2>
+                <p>
+                    Somos un estudio de desarrollo mobile independiente 
+                    radicado en Bahía Blanca, Argentina. Creamos aplicaciones 
+                    que combinan tecnología moderna con impacto real en las 
+                    personas.
+                </p>
+                <p>
+                    Desde soluciones de gestión empresarial hasta apps de 
+                    inclusión social, cada proyecto nace con un propósito claro: 
+                    hacer la vida más fácil.
+                </p>
+            </div>
+            <div class="skills-grid fade-in">
+                <div class="skill-item">
+                    <span>📱</span>
+                    <strong>Mobile First</strong>
+                    <p>iOS & Android</p>
+                </div>
+                <div class="skill-item">
+                    <span>⚡</span>
+                    <strong>React Native</strong>
+                    <p>Apps nativas</p>
+                </div>
+                <div class="skill-item">
+                    <span>🔥</span>
+                    <strong>Firebase</strong>
+                    <p>Backend cloud</p>
+                </div>
+                <div class="skill-item">
+                    <span>♿</span>
+                    <strong>Accesibilidad</strong>
+                    <p>Apps inclusivas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ─── CONTACTO ─── -->
+<section class="contact-section" id="contacto">
+    <div class="container">
+        <div class="section-title fade-in">
+            <h2>Contacto</h2>
+            <p>¿Tenés un proyecto en mente? Hablemos.</p>
+            <div class="line"></div>
+        </div>
+        <div class="contact-grid">
+            <a href="mailto:atomodevsit@gmail.com" class="contact-card fade-in">
+                <span>📧</span>
+                <strong>Email</strong>
+                <p>atomodevsit@gmail.com</p>
+            </a>
+            <a href="https://github.com/atomodevsit" 
+               target="_blank" class="contact-card fade-in">
+                <span>💻</span>
+                <strong>GitHub</strong>
+                <p>@atomodevsit</p>
+            </a>
+            <a href="https://linkedin.com/in/atomodevsit" 
+               target="_blank" class="contact-card fade-in">
+                <span>🔗</span>
+                <strong>LinkedIn</strong>
+                <p>Atomo Devs IT</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="footer-links">
+        <a href="privacy-policy.html">Política de Privacidad</a>
+        <a href="terms.html">Términos de Servicio</a>
+    </div>
+    <p>&copy; 2026 Atomo Devs IT — Bahía Blanca, Argentina 🇦🇷</p>
+</footer>
+
+<!-- ─── JAVASCRIPT ─── -->
+<script>
+    // Animación fade-in al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Scroll suave para navegación
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
